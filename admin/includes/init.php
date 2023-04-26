@@ -1,6 +1,7 @@
-<?php 
+<?php
 
 include("new_config.php");
-include("database.php");
+include("Database.php");
+include("User.php")
 
-?>
+    ?>
