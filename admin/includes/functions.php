@@ -10,11 +10,14 @@ function classAutoLoader($class)
 if(is_file($path)&&!class_exists($class)){
     include($path);
 } 
-
-
-      
-    
 }
+
+
+function redirect($location){
+
+    header("Location:{$location}");
+}
+
 
 spl_autoload_register('classAutoLoader');
 

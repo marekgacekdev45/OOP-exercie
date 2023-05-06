@@ -27,6 +27,7 @@ class User
         }
     }
 
+
     public static function findThisQuery($sql)
     {
         global $database;
@@ -39,6 +40,26 @@ class User
 
         return $objectArray;
     }
+
+
+    public static function verifyUser($username, $password)
+    {
+        global $database;
+        $username = $database->escape_string($username);
+        $password = $database->escape_string($password);
+
+        $sql = "SELECT * from users WHERE username = '{$username}' AND password ='{$password}' LIMIT 1";
+
+        $resultArray = self::findThisQuery($sql);
+
+        if (!empty($resultArray)) {
+            $firstItem = array_shift($resultArray);
+            return $firstItem;
+        } else {
+            return false;
+        }
+    }
+
 
     public static function instantiation($record)
     {
